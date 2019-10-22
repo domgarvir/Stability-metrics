@@ -12,7 +12,7 @@ The database files contain the stability metrics (in different columns) and numb
 Inside the DATA subfolder is the complete database of stability metrics: "Stability_DB.csv". 
 Each line of that file is a record of a trophic network. The first column, named 'network' is the ID of each community. The rest of the columns contains different stability metrics, one in each column, and some additional information : N (number of species), Nini (Numbers of species at the start of simulation), Nb (number of basal species), B (total biomass), and the random value of the scaling parameters used (a_i, a_j, h_i, h_j).
 
-The file named "our_sample_STABILITY_DB.csv" contains the random sampling of the complete database we used for the analyses, with 100 communities of each size, from 5 to 100. #The rest of the files are generated with the analysis code and are used for generating the figures. 
+The file named "our_sample_STABILITY_DB.csv" contains the random sampling of the complete database we used for the analyses, with 100 communities of each size, from 5 to 100.
  
  
  2 Analysis:
