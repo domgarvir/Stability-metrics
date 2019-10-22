@@ -1,0 +1,15 @@
+size=rSMA
+most var explained=0.5305208522285217
+min var explained=0.2715896809575045
+average var explained=0.4057548960749821 +- 0.048984379744528635
+most correlated metrics var explained=0.48459688338861723
+size=rBIG
+most var explained=0.5849308061084034
+min var explained=0.23774844354250746
+average var explained=0.43798304666558435 +- 0.07072134981590686
+most correlated metrics var explained=0.48732063263482506
+size=rMED
+most var explained=0.5340529223976977
+min var explained=0.27313880823676195
+average var explained=0.4196049567965395 +- 0.0504819749191173
+most correlated metrics var explained=0.4049546155409668
