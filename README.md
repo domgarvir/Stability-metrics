@@ -1,8 +1,8 @@
 # Stability-metrics
-code to analyse the database of stability metrics
+code to analyse the database of stability metrics of the paper xxxx
 The database files contain the stability metrics (in different columns) and number of species (N) for many different networks (each defined by an ID in the first column).
  
- This folder contains:
+ This page contains:
 
  -1 Database of stability metrics: DATA subfolder 
  -2 Code to analize and study the correlations between the stability metrics: CODE_ANALISIS subfolder
@@ -10,27 +10,31 @@ The database files contain the stability metrics (in different columns) and numb
  
  1 Database:
 Inside the DATA subfolder is the complete database of stability metrics: "Stability_DB.csv". 
-Each line of that file is a record of a trophic network. The first column, named 'network' is the ID of each community. The rest of the columns contains different stability metrics, one in each column, and some additional information : N (number of species), Nini (Numbers of species at the start of simulation), Nb (number of basal species), B (total biomass), and the random value of the scaling parameters used (a_i, a_j, h_i, h_j).
-
-The file named "our_sample_STABILITY_DB.csv" contains the random sampling of the complete database we used for the analyses, with 100 communities of each size, from 5 to 100.
+Each line of that file is a record of a trophic network. The first column, named 'network' is the ID of each community. The rest of the columns contains different stability metrics, one in each column, and some additional information : N (number of species in stationary state), Nini (Numbers of species at the start of simulation), Nb (number of basal species), B (total biomass), and the random value of the scaling parameters used (a_i, a_j, h_i, h_j).
+The file named "Dataset_S1.csv" contains all the complete database of stability metrics, with more than 100 networks for each different size. 
+The file named "Dataset_S2.csv" contains the random sampling of the complete database (Dataset_S1.csv) we used for the analyses, with 100 communities of each size, from 5 to 100 species.
  
  
  2 Analysis:
-The code for the analysis is written in Python. Run it with "python Analisys.py" to analyze the sample used in the manuscript or "python Analisys.py resample" to get a different sample of communities.
+The code for the analysis is written in Python3. 
+To run it, type "python Analisys.py" to analyze the sample used in the manuscript or "python Analisys.py resample" to get a different sample of communities.
 The program opens the database file and randomly samples 100 networks of each size (N from 5 to 100). With those samples it creates a "sample database", that is stored in the database folder with the name "sample_db.csv". 
 Then, it prepares the database for the analysis: changes sign of metrics so all of them increase in value with increasing community stability, and normalizes the values when neccesary to represent all metrics as described in SI section 10.
 
 Part t 1: Obtaining correlations/covariations as a function of size: 
 for each different community size (from 5 to 100) the Spearman’s correlation rank of all pairwise correlations for each size is computed and stored in the database folder under the name "DB_corr.csv". Rank covariance (based in rank correlation) and value covariance (based in pearson correlation) for all pairs of metrics are also stored as "DB_covS.csv" and "DB_covP.csv" respectively. Also Figure1.pdf and the two figures composing FigS1 are generated in the OUTPUT folder.
+Figure 1 and S1 are generated in the OUTPUT folder. 
 
 Part2: create network of metrics:
-For each 'size' category (small, medium and large), the average value of each pairwise correlation over all sizes included in the category are obtained, together with its standard deviation. This information (FigS5) is stored in the form of a correlation matrix in the output folder with the name "Table_'size'".pdf. 
-The file containing the network of correlations is stored also in the database folder as "metric_network_'size'.gml". These files can be opened in Gephi to apply the modularity algorithm. Once the modularity algorithm provides the partition that maximizes the modularity we save that partition with "export/Graph file". The partition we obtained is in the database folder under the name of "groups_'size'.graphml". 
+For each 'size' category (small, medium and large), the average value of each pairwise correlation over all sizes included in the category are obtained, together with its standard deviation. This information (FigS5) is stored in the form of a correlation matrix in the output folder with the name "FigS5_'size'".pdf in the OUTPUT folder. 
+The file containing the network of correlations is stored also in the database folder as "metric_network_'size'.gml". These files can be opened in Gephi to apply the modularity algorithm. Once the modularity algorithm provides the partition that maximizes the modularity save that partition with "export/Graph file" in graphml format. 
+The partition we obtained is in the DATABASE folder under the name of "groups_'size'.graphml". 
 
-Part3: Study the network:
-The analysis code reads the "groups_'size.graphml" file, and generates the merged network we use to study the inter and intra correlation among groups, a file named "mergedmetrics_'size'.gml" in the database folder. 
-Also the dendrogram (Fig2 and FigS2) is generated and stored under the name "dendrogram_'size'.pdf" and the heatmap (FigS3) un der the name "heatmap_'size'.pdf", inside the OUTPUT folder. 
-The analysis of the explained variance is carried out, and printed in screen. FigureS5 is generated in the OUTPUT folder. 
+Part3: network study: (Figure 2, S2, S3, S4, S5)
+The analysis code reads the "groups_'size.graphml" file, and generates the merged network (a file named "mergedmetrics_'size'.gml" in the OUTPUT folder) we use to study the inter and intra correlation among groups (FigS2). 
+The dendrogram and heatmaps of correlations (Fig2 and FigS3) are generated and stored under the name "FigS3_'size'.pdf" and FigS4_'size'.pdf inside the OUTPUT folder. 
+The violin plot for studying the sing of the correlations (FigS4iv) is generated and stored as "violin.pdf" inside the OUTPUT folder. FigureS5 is also generated generated. 
 
-The violin plot for studying the sing of the correlations (FigS3.d) is generated and stored as "violin.pdf" inside the OUTPUT folder 
-Finally, the analysis of the covariance ellipsoid volume is performed and FigureS6 is saved in the OUTPUT folder.
+The analysis of the explained variance: FigureS6 is generated and the values of explained variance are stored in "Variance.txt" , both are located in the OUTPUT folder. 
+
+Finally, the analysis of the covariance ellipsoid volume is performed and FigureS7 is saved in the OUTPUT folder.
